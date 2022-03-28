@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import multiprocessing
 import argparse
 import os
 
@@ -101,5 +102,8 @@ if __name__ == "__main__":
         assert len(input_shape) == 2
     if model_path is None:
         model_path = os.path.join(cfg.save_dir, "model_best/model_best.ckpt")
-    main(cfg, model_path, out_path, input_shape)
+    proc = multiprocessing.Process(target=main, args=[cfg, model_path, out_path, input_shape])
+    proc.start()
+    proc.join()
+    proc.terminate()
     print("Model saved to:", out_path)
