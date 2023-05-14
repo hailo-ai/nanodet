@@ -2,6 +2,7 @@ Cython==0.29.24
 matplotlib==3.4.3
 numpy==1.21.2
 onnx==1.8.204
+onnxruntime==1.8.0
 onnx-simplifier==0.4.13
 opencv-python==4.5.5.64
 pyaml==21.10.1
